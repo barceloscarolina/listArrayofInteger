@@ -80,11 +80,11 @@ public class ListArrayOfInteger {
         return s.toString();
     }
 
-    public boolean remove(Integer valor_a_remover) { // O(n)
+    public boolean remove(Integer element) { // O(n)
 
         for (int i = 0; i <= count; i++) {
 
-            if (valor_a_remover.equals(data[i])) {
+            if (element.equals(data[i])) {
 
                 for (int j = i; j <= count - 2; j++) {
 
@@ -106,21 +106,25 @@ public class ListArrayOfInteger {
 
     }
 
-    public int set(Integer novo_valor, int index_desejado) { // O(1)
+    public int set(Integer element, int index) { // O(1)
 
-        Integer valor_anterior = data[index_desejado];
+        if (index < 0 || index >= count) {
+            throw new IndexOutOfBoundsException("ERRO" + index);
+        }
 
-        data[index_desejado] = novo_valor;
+        Integer aux = data[index];
 
-        return valor_anterior;
+        data[index] = element;
+
+        return aux;
 
     }
 
-    public boolean contains(Integer valor) { // O(n)
+    public boolean contains(Integer element) { // O(n)
 
-        for (int i = 0; i <= count; i++) {
+        for (int i = 0; i < count; i++) {
 
-            if (data[i] == valor) {
+            if (data[i] == element) {
                 return true;
             }
 
