@@ -134,4 +134,64 @@ public class ListArrayOfInteger {
 
     }
 
+    public void add(int index, Integer element) { // O
+
+        if (index < 0 || index >= count) {
+            throw new IndexOutOfBoundsException("ERRO" + index);
+        }
+
+        if(count == data.length){
+            setCapacity(data.length*2);
+        }
+
+        for (int i = count; i > index; i--) {
+
+            data[i] = data[i - 1];
+
+        }
+
+        data[index] = element;
+
+        count++;
+
+    }
+
+    public Integer removeByIndex(int index) { // O
+
+        if (index < 0 || index >= count) {
+            throw new IndexOutOfBoundsException("ERRO" + index);
+        }
+
+        Integer aux = data[index];
+
+        for (int i = index; i < count-1; i++) {
+
+            data[i] = data[i + 1];
+
+        }
+
+        data[count -1] = null;
+
+        count--;
+
+        return aux;
+
+    }
+
+    public int IndexOf(Integer element) {
+
+        for (int i = 0; i <= count; i++) {
+
+            if (data[i].equals(element)) {
+
+                return i;
+
+            }
+
+        }
+
+        return -1;
+
+    }
+
 }
