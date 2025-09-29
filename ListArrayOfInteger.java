@@ -44,7 +44,7 @@ public class ListArrayOfInteger {
 
     public Integer get(int index) { // O(1)
 
-        if (index < 0 || index > count) {
+        if (index < 0 || index >= count) {
             throw new IndexOutOfBoundsException("ERRO" + index);
         }
 
@@ -82,11 +82,11 @@ public class ListArrayOfInteger {
 
     public boolean remove(Integer element) { // O(n)
 
-        for (int i = 0; i <= count; i++) {
+        for (int i = 0; i < count; i++) {
 
             if (element.equals(data[i])) {
 
-                for (int j = i; j <= count - 2; j++) {
+                for (int j = i; j < count - 1; j++) {
 
                     data[j] = data[j + 1];
 
@@ -124,7 +124,7 @@ public class ListArrayOfInteger {
 
         for (int i = 0; i < count; i++) {
 
-            if (data[i] == element) {
+            if (data[i].equals(element)) {
                 return true;
             }
 
@@ -136,12 +136,12 @@ public class ListArrayOfInteger {
 
     public void add(int index, Integer element) { // O
 
-        if (index < 0 || index >= count) {
+        if (index < 0 || index > count) {
             throw new IndexOutOfBoundsException("ERRO" + index);
         }
 
-        if(count == data.length){
-            setCapacity(data.length*2);
+        if (count == data.length) {
+            setCapacity(data.length * 2);
         }
 
         for (int i = count; i > index; i--) {
@@ -164,13 +164,13 @@ public class ListArrayOfInteger {
 
         Integer aux = data[index];
 
-        for (int i = index; i < count-1; i++) {
+        for (int i = index; i < count - 1; i++) {
 
             data[i] = data[i + 1];
 
         }
 
-        data[count -1] = null;
+        data[count - 1] = null;
 
         count--;
 
@@ -180,7 +180,7 @@ public class ListArrayOfInteger {
 
     public int IndexOf(Integer element) {
 
-        for (int i = 0; i <= count; i++) {
+        for (int i = 0; i < count; i++) {
 
             if (data[i].equals(element)) {
 
